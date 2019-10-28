@@ -51,30 +51,52 @@
   </table>
 
 
-  <div *ngIf="selection.selected.length">
-    <p>#: {{fileNumber}}</p>
-    <p>DB: {{selection.selected[0].name}}</p>
-    <p>Date: {{date}} </p>
-    <p>User: {{user}}</p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p>info:{{info}}</p>
-
+  <!-- <div *ngIf="selection.selected.length"> -->
+  <div >
     <mat-card class="example-card"  >
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
+        <div mat-card-avatar>
+           <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+        </div>
         <mat-card-title>{{cardData.dbName}}</mat-card-title>
         <mat-card-subtitle>{{cardData.serverNmae}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+     
       <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
-        </p>
+
+        <form class="example-form">
+          <label>Date : {{cardData.date | date : "dd/MM/yy HH:mm:ss" }}</label>
+        </form>
+        <form class="example-form">
+          <label>User : {{cardData.user}}</label>
+        </form>
+        <form class="example-form">
+          <label>Version : {{cardData.versin}}</label>
+        </form>
+        <form class="example-form">
+          <label>Path : {{cardData.path}}</label>
+        </form>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Info" value="{{cardData.info}}">
+          </mat-form-field>
+        </form>
+
+
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Info" [formControl]="emailFormControl" value="{{cardData.info}}">
+            <mat-error *ngIf="!emailFormControl.hasError('required')">
+              Please enter an info
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Info is <strong>required</strong>
+            </mat-error>
+
+          </mat-form-field>
+        </form>
+
+        
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>Snapshot</button>

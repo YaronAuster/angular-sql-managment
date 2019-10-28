@@ -1,6 +1,7 @@
 import {SelectionModel} from '@angular/cdk/collections';
 import {Component} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import {FormControl, Validators} from '@angular/forms';
 
 export interface PeriodicElement {
   name: string;
@@ -12,7 +13,7 @@ export interface PeriodicElement {
 export class CardData {
   dbName: string = "DB Name";
   serverNmae: string = "Dev Server";
-  date: number = Date.now();
+  date: Date = new Date(Date.now());
   user: string = "YARONAU";
   info: string = "ICD update from rida 891";
   version: string = "#1285";
@@ -45,6 +46,10 @@ export class TableSelectionExample {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(false, []);
   cardData= new CardData();
+  emailFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
