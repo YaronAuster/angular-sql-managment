@@ -55,8 +55,9 @@
   <div >
     <mat-card class="example-card"  >
       <mat-card-header>
-        <div mat-card-avatar>
-           <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+        <div mat-card-avatar>         
+          <img mat-card-image src="assets/img/myimage.png">
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
         </div>
         <mat-card-title>{{cardData.dbName}}</mat-card-title>
         <mat-card-subtitle>{{cardData.serverNmae}}</mat-card-subtitle>
@@ -76,12 +77,6 @@
         <form class="example-form">
           <label>Path : {{cardData.path}}</label>
         </form>
-        <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Info" value="{{cardData.info}}">
-          </mat-form-field>
-        </form>
-
 
         <form class="example-form">
           <mat-form-field class="example-full-width">
